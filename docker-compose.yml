@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  analyzer:
+    build: .
+    container_name: avisador-analyzer
+    restart: always
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./config.yaml:/app/config.yaml:ro
+    command: ["python", "main.py"]
+
+  web:
+    build: .
+    container_name: avisador-web
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./config.yaml:/app/config.yaml:ro
+    command: ["uvicorn", "web:app", "--host", "0.0.0.0", "--port", "8000"]
+

@@ -53,6 +53,20 @@ Pequeño servicio que monitoriza pares en DEX (p. ej. PancakeSwap en BSC) usando
    ```
 4. Al dispararse una alerta, se insertará un registro en `alerts` vía REST.
 
+### Despliegue con Docker en un VPS
+1. Copia el repo al servidor (Ubuntu recomendado). Crea `config.yaml` allí (no se sube a git).
+2. Instala docker y compose:
+   ```bash
+   curl -fsSL https://get.docker.com | sh
+   sudo usermod -aG docker $USER
+   # cierra y vuelve a entrar en la sesión
+   ```
+3. Levanta los servicios (analizador + web):
+   ```bash
+   docker compose up -d --build
+   ```
+4. La web quedará en `http://IP_DEL_SERVIDOR:8000`. Los contenedores reiniciarán al arrancar el VPS.
+
 ### Configuración
 Ver `config.example.yaml` para todos los parámetros disponibles. Los principales:
 - `watchlist`: contratos o pares a monitorizar (por ahora Dexscreener por `pairAddress` o `tokenAddress`).
