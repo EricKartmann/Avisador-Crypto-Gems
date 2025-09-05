@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+
+# Env
+.venv/
+
+# Configs sensibles
+config.yaml
+
+# OS/IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs / artefactos
+*.log
+*.sqlite
+*.db
+

@@ -1,0 +1,44 @@
+watchlist:
+  # Puedes usar tokenAddress o pairAddress. Para ALU en BSC, ejemplo por token:
+  - network: bsc
+    tokenAddress: "0x8263CD1601FE73C066bf49cc09841f35348e3be0"  # Altura (ALU)
+    note: "ALU"
+
+poll_seconds: 20
+cooldown_minutes: 10
+
+thresholds:
+  min_liquidity_usd: 200000
+  min_txns_m5: 20
+  volume_spike_multiplier: 4.0   # V1m vs mediana 30m
+  volume_zscore: 3.0
+  buy_sell_tx_ratio: 1.8
+  buy_share_m5: 0.65
+  dprice_1m_pct: 2.5
+  dprice_5m_pct: 6.0
+  whale_trade_usd: 20000
+
+telegram:
+  enabled: false
+  bot_token: "YOUR_TELEGRAM_BOT_TOKEN"
+  chat_id: "YOUR_CHAT_ID"
+
+logging:
+  level: "INFO"  # DEBUG para más detalle
+
+discovery:
+  enabled: true
+  networks: ["bsc", "polygon", "ethereum", "base"]
+  top_n: 50
+  min_liquidity_usd: 100000
+  min_volume_m5_usd: 10000
+  min_txns_m5: 20
+  exclude_symbols: ["USDT", "USDC", "BUSD", "DAI", "FDUSD", "TUSD"]
+  refresh_seconds: 120
+
+supabase:
+  enabled: false
+  url: "https://YOUR-PROJECT.supabase.co"
+  anon_key: "YOUR_ANON_KEY"
+  table_alerts: "alerts"
+
